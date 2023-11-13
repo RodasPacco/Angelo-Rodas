@@ -1,0 +1,54 @@
+<div class="m-0 pt-5 pr-10 pb-10 pl-6 md:pl-14">
+  <app-selectFilter title="Filtrar por:" [titleRef]="filterRef" [showBorder]="false">
+    <app-selectFilter title="Nombre">
+      <div class="relative z-0 w-full mb-6 group">
+        <input
+          type="text"
+          name="floating_name"
+          id="floating_name"
+          class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-600 focus:outline-none focus:ring-0 peer"
+          placeholder=" "
+          [(ngModel)]="name"
+          (ngModelChange)="updateFilterName($event)"
+          required
+        />
+      </div>
+    </app-selectFilter>
+    <app-selectFilter title="Descripción">
+      <div class="relative z-0 w-full mb-6 group">
+        <textarea
+          id="message"
+          rows="4"
+          class="block p-2.5 w-full text-sm text-gray-900 bg-transparent rounded-lg border border-gray-300 focus:ring-blue-700 focus:border-blue-700 dark:border-gray-600 dark:focus:ring-blue-500 dark:focus:border-blue-500 peer"
+          placeholder=""
+          [(ngModel)]="description"
+          (ngModelChange)="updateFilterDescription($event)"
+        ></textarea>
+      </div>
+    </app-selectFilter>
+    <app-selectFilter title="Géneros">
+      <div
+        *ngFor="let row of genres"
+        (click)="selectGen(row)"
+        class="cursor-pointer"
+        [ngClass]="{ 'text-red-700': isSelectGenre(row) }"
+      >
+        {{ row }}
+        <i
+          *ngIf="isSelectGenre(row)"
+          class="fas fa-times text-sm"
+          style="margin-left: 3px"
+        ></i>
+      </div>
+    </app-selectFilter>
+  </app-selectFilter>
+
+  <ng-template #filterRef>
+    <i class="fa fa-filter text-base" aria-hidden="true"></i>
+    Filtrar por:
+  </ng-template>
+  <!-- <div class="flex items-center w-full py-5 font-medium rtl:text-right gap-3">
+    <i class="fa fa-filter text-base" aria-hidden="true"></i>
+    Filtrar por:
+  </div> -->
+</div>

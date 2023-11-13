@@ -1,0 +1,24 @@
+app-filters {
+  color: #0d1f40;
+  display: inline-block;
+  height: 100%;
+}
+
+.titleMovies {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+}
+
+.container-large {
+  margin: 0 auto;
+  max-width: 1070px;
+}
+
+.films {
+  border-left: 1px solid rgba(0, 0, 0, 0.25);
+  vertical-align: top;
+}
+
+app-movie {
+  margin: 0 4px 45px;
+  vertical-align: top;
+}

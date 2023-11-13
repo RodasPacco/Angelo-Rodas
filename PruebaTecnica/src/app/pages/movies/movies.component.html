@@ -1,0 +1,32 @@
+<div class="container-large">
+  <h2 class="text-3xl pt-5 pb-2 pl-6 xl:text-5xl md:text-4xl md:pl-14 sm:pb-10 sm:pt-10 font-bold text-left text-blue-900 titleMovies">Películas</h2>
+  <div class="block md:flex">
+    <app-filters
+      class="w-full md:max-w-xs"
+      [selectedGenres]="selectedGenres"
+      (deleteGenre)="deleteGenre($event)"
+      (selectGenre)="addSelectGenre($event)"
+      (filterTitle)="filterTitle = $event"
+      (filterDescription)="filterDescription = $event"
+    ></app-filters>
+    <div class="films h-full mb-20 inline-block w-full">
+      <div
+        class="inline-block align-top pt-0 md:pt-10 px-5 w-full"
+        *ngIf="movieFilters.length > 0"
+      >
+        <div class="pl-2 pb-2 pr-2">
+          <app-chip
+            *ngFor="let selectGenre of selectedGenres"
+            [name]="selectGenre"
+            (closeEmit)="deleteGenre($event)"
+          ></app-chip>
+        </div>
+
+        <app-movie
+          *ngFor="let movie of movieFilters"
+          [movie]="movie"
+        ></app-movie>
+      </div>
+    </div>
+  </div>
+</div>

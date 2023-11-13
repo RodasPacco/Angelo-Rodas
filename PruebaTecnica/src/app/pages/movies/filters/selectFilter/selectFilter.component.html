@@ -1,0 +1,32 @@
+<div class="card">
+  <button
+    class="flex items-center justify-between w-full py-3 font-medium rtl:text-right gap-3"
+    [ngClass]="{ 'text-gray-500': !isVisible }"
+    (click)="isVisible = !isVisible"
+  >
+    <ng-container
+      *ngTemplateOutlet="
+        titleRef || defaultTemplate;
+      "
+    ></ng-container>
+    <ng-template #defaultTemplate>
+      {{ title }}
+    </ng-template>
+    <i
+      *ngIf="!isVisible"
+      [class]="openIcon"
+      class="text-base"
+      style="margin-left: 3px"
+    ></i>
+    <i
+      *ngIf="isVisible"
+      [class]="closeIcon"
+      class="text-base"
+      style="margin-left: 3px"
+    ></i>
+  </button>
+  <hr *ngIf="!isVisible" />
+  <div class="pb-3" [ngClass]="{'border-b border-gray-200': showBorder}" *ngIf="isVisible">
+    <ng-content></ng-content>
+  </div>
+</div>

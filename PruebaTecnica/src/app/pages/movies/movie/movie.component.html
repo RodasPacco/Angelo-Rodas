@@ -1,0 +1,11 @@
+<div
+  *ngIf="movie"
+  class="p-1 inline-block mb-2 movie cursor-pointer"
+  (click)="goDetails()"
+>
+  <img [ngSrc]="movieSrc" width="224" height="339" />
+  
+  <h2 class="text-base md:text-lg lg:text-xl font-bold text-center">
+    {{ movie.title }}
+  </h2>
+</div>
